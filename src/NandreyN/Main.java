@@ -6,6 +6,7 @@ package NandreyN;
 //import org.apache.poi.ss.usermodel.Workbook;
 
 
+import java.text.ParseException;
 
 public class Main {
     static double getFirst(double x)
@@ -51,6 +52,9 @@ public class Main {
             System.out.println("Sum = " + Double.toString(sum) + " , k = " + Integer.toString(k));
         } catch (SeriesException e) {
             System.out.println(e.getMessage());
+        }
+        catch(IllegalArgumentException e){
+            System.out.println("Invalid argument :" + e.getMessage());
         }
     }
 }
