@@ -1,19 +1,11 @@
 package NandreyN;
 
-//import org.apache.poi.ss.usermodel.Cell;
-//import org.apache.poi.ss.usermodel.Row;
-//import org.apache.poi.ss.usermodel.Sheet;
-//import org.apache.poi.ss.usermodel.Workbook;
-
-
-import java.text.ParseException;
-
 public class Main {
-    static double getFirst(double x)
+    private static double getFirst(double x)
     {
         return (Math.pow(x,2) * Math.pow(4,6)) / (Math.pow(3,6) * 6);
     }
-    static double next(double x, double k, double previous){
+    private static double next(double k, double previous){
         return -previous*256 / (81*(2*k + 1)*(2*k));
     }
 
@@ -35,7 +27,7 @@ public class Main {
 
             while (Math.abs(delta) >= eps)
             {
-                double current = next(x,k,prev);
+                double current = next(k,prev);
                 sum += current;
                 k++;
                 delta = current - prev;
@@ -48,7 +40,7 @@ public class Main {
                 };
                 writer.writeLine(writerArgs);
             }
-            writer.save("SeriesResults.xls");
+            writer.save();
             System.out.println("Sum = " + Double.toString(sum) + " , k = " + Integer.toString(k));
         } catch (SeriesException e) {
             System.out.println(e.getMessage());
